@@ -32,10 +32,8 @@ var client = new Twitter({
 function processCommands(command, commandParam){
 
 	//console.log(commandParam);
-
-	switch(command){
-
-	case 'my-tweets':
+        switch(command){
+        case 'my-tweets':
 		getMyTweets(); break;
 	default: 
 		console.log("Invalid command. Please type any of the following commnds: my-tweets spotify-this-song movie-this or do-what-it-says");
@@ -45,22 +43,21 @@ function processCommands(command, commandParam){
 }
 
 function getMyTweets(){
+var params = {screen_name: 'notarussianbot', count: 5, exclude_replies:true, trim_user:true};
+	client.get('statuses/user_timeline', params, function(error, tweets, response) {
+		if (!error) {
+		//console.log(tweets);
+		tweetsArray = tweets;
 
-	var params = {screen_name: 'notarussianbot', count: 5, exclude_replies:true, trim_user:true};
-		client.get('statuses/user_timeline', params, function(error, tweets, response) {
-				if (!error) {
-					//console.log(tweets);
-					tweetsArray = tweets;
-
-					for(i=0; i<tweetsArray.length; i++){
-						console.log("Created at: " + tweetsArray[i].created_at);
-						console.log("Text: " + tweetsArray[i].text);
-						console.log('--------------------------------------');
-					}
-				}
-				else{
-					console.log(error);
-				}
+		for(i=0; i<tweetsArray.length; i++){
+		console.log("Created at: " + tweetsArray[i].created_at);
+		console.log("Text: " + tweetsArray[i].text);
+		console.log('--------------------------------------');
+		};
+	}
+	  else{
+              console.log(error);
+		}
 	});
 
 }
