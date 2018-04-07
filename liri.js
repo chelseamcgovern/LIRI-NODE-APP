@@ -8,7 +8,7 @@ processCommands(inputCommand, commandParam);
 
 //Loading modules
 var Twitter = require('twitter');
-var spotify = require('spotify');
+var spotify = require('spotify'); //for future use
 var request = require('request');
 var fs = require('fs');
 var keys = require("./keys.js");
