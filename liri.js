@@ -36,7 +36,7 @@ function processCommands(command, commandParam){
         case 'my-tweets':
 		getMyTweets(); break;
 	default: 
-		console.log("Invalid command. Please type any of the following commnds: my-tweets spotify-this-song movie-this or do-what-it-says");
+		console.log("Invalid command. Please type any of the following commnds: "my-tweets");
 };
 
 
